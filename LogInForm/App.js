@@ -180,14 +180,6 @@ const styles = StyleSheet.create({
 
 });
 
-// export default  StackNavigator({
-//   Home: {
-//     screen: App
-//   },
-//   Dashboard : {
-//     screen: Dashboard
-//   }
-// });
 
 export default createAppContainer(AppNavigator);
 
