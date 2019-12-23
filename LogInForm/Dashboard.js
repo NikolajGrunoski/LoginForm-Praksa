@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, Dimensions, View } from 'react-native';
+import { StyleSheet, ImageBackground, TouchableOpacity, Dimensions, View, Text, Button } from 'react-native';
 import { render } from 'react-dom';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -9,6 +9,7 @@ import { HeaderButtons, HeaderButton, Item } from 'react-navigation-header-butto
 import { ScreenOrientation } from 'expo';
 
 import bgImage from './assets/images/background.jpg';
+import logo from './assets/images/logo.png';
 
 
 
@@ -44,37 +45,51 @@ export default class Dashboard extends Component {
 
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                <View style={styles.firstRow}>
-                    <TouchableOpacity style={styles.formOne}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
+                <View >
+                    <TouchableOpacity style={styles.firstField}>
+                        <Icon name={'md-clipboard'} size={40} style={styles.daschIcon} />
+                        <Text style={styles.textIcon}>Score:800</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.formOne}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
+                    <TouchableOpacity style={styles.firstRow}>
+                        <Icon name={'md-arrow-round-down'} size={40} style={styles.daschIcon} />
+                        <Text style={styles.textIcon}>This month</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.formOne}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
+                    <TouchableOpacity style={styles.firstRow}>
+                        <Icon name={'md-clock'} size={40} style={styles.daschIcon} />
+                        <Text style={styles.textIcon}>Hours Left : 3 Hours</Text>
+
                     </TouchableOpacity>
+
+                </View>
+                <View style={styles.backgroundField}>
+                    <TouchableOpacity style={styles.secondInput}>
+                        <Icon name={'ios-calendar'} size={40} style={styles.daschIcon} />
+                        <Text style={styles.textIcon}>This Week</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.secondRow}>
+                        <Icon name={'md-planet'} size={40} style={styles.daschIcon} />
+                        <Text style={styles.textIcon}>Global Score</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.secondRow}>
+                        <ImageBackground source={logo} style={styles.backgroundContainer}></ImageBackground>
+                    </TouchableOpacity>
+
+                    
                 </View>
 
-                <View style={styles.secondtRow}>
-
-                    <TouchableOpacity style={styles.formTwo}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.formTwo}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.formTwo}>
-                        <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
+                <View>
+                    <TouchableOpacity style={styles.btnPlay}>
+                        <Button title='Play'></Button>
                     </TouchableOpacity>
                 </View>
 
 
             </ImageBackground>
+
         )
 
     }
@@ -88,48 +103,88 @@ const styles = StyleSheet.create({
         flex: 2,
         width: null,
         height: null,
-        //   alignItems: 'strech',
-        // justifyContent:'space-evenly',
-
         flexDirection: 'row',
-        // flexWrap: 'wrap'
-
     },
     firstRow: {
-        flex: 2,
-        width: null,
-        height: null,
+        flex: 1,
+        width: 200,
+        height: 200,
         flexDirection: 'column',
-        // flexWrap: 'wrap'
-    },
-    secondtRow: {
-        flex: 2,
-        width: null,
-        height: null,
-        flexDirection: 'column',
-        // flexWrap: 'wrap'
-    },
-    formOne: {
-        width: 100,
-        height: 110,
         borderRadius: 20,
         backgroundColor: 'white',
-        margin: 10,
-        flex: 1,
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        marginLeft: 120,
+        // marginBottom:20,
+        borderColor: 'rgba(0, 0, 0, 0.35)',
+        borderStyle: "solid",
+        borderWidth: 4,
+        borderTopWidth: 0,
+        backgroundColor: '#5DBCD2',
+    },
+    firstField: {
+        flex: 1,
+        width: 200,
+        height: 200,
+        flexDirection: 'column',
+        borderRadius: 20,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        marginLeft: 120,
+        marginTop: 20,
+        borderColor: 'rgba(0, 0, 0, 0.35)',
+        borderStyle: "solid",
+        borderWidth: 4,
+        borderTopWidth: 0,
+        backgroundColor: '#5DBCD2',
+    },
+    secondInput: {
+        flex: 1,
+        width: 200,
+        height: 200,
+        flexDirection: 'column',
+        borderRadius: 20,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        backgroundColor: '#5DBCD2',
+        marginTop: 20,
+        borderColor: 'rgba(0, 0, 0, 0.35)',
+        borderStyle: "solid",
+        borderWidth: 4,
+        borderTopWidth: 0
+    },
+    secondRow: {
+        flex: 1,
+        width: 200,
+        height: 200,
+        flexDirection: 'column',
+        borderRadius: 20,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        borderColor: 'rgba(0, 0, 0, 0.35)',
+        borderStyle: "solid",
+        borderWidth: 4,
+        borderTopWidth: 0,
+        backgroundColor: '#5DBCD2',
 
     },
-    formTwo: {
-        width: 100,
-        height: 110,
-        borderRadius: 20,
-        backgroundColor: 'black',
-        margin: 10,
-        flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap'
-    }
+    daschIcon: {
+        marginTop: 30,
+        marginBottom: 30,
+        marginLeft: 80,
+        color: 'rgba(255, 255, 255, 0.7)'
+    },
+    textIcon: {
+     
+    
+    },
+    btnPlay:{
+        backgroundColor:'red',
+        flex:3,
+        flexDirection: 'column-reverse',
+    },
+
+
+
 
 });
 

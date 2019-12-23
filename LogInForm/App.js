@@ -100,6 +100,7 @@ const AppNavigator = createStackNavigator({
     screen: Dashboard
   }
 });
+
 const styles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
