@@ -94,9 +94,11 @@ class App extends React.Component{
 
 const AppNavigator = createStackNavigator({
   Home: {
+    // header: 0,
     screen: App,
   },
   Dashboard: {
+    // header:null,
     screen: Dashboard
   }
 });
