@@ -3,11 +3,12 @@ import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'reac
 import { render } from 'react-dom';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import App from './App';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { HeaderButtons, HeaderButton, Item, headerRight } from 'react-navigation-header-buttons';
+// import App from './App';
+// import Icon from 'react-native-vector-icons/Ionicons';
+import { HeaderButton, Item, headerRight } from 'react-navigation-header-buttons';
 import { ScreenOrientation } from 'expo';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
+
 
 import bgImage from './assets/images/background.jpg';
 import logo from './assets/images/logo.png';
@@ -18,50 +19,68 @@ export default class Dashboard extends Component {
     componentDidMount() {
         ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
     }
-    // componentDidMount() {
-    //     ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
-    //     this.setState({ dataChart: this.getData() });
-    // }
-    // switchToLandscape() {
-    //     ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
-    // }
 
-    // static navigationOptions = {
-    //     title: 'Dashboard',
-    //     headerStyle: {
-    //         backgroundColor: '#01446E',
-    //     },
-    //     headerRight: {
+    goToQuestion = () => {
+        this.props.navigation.navigate('Question');
+    }
 
-    //         <TouchableOpacity>
-    //             <Icon name={`md-settings`} style={{ color: 'rgba(255, 255, 255, 0.7)' }} size={28} />
-    //         </TouchableOpacity>
+ 
 
-    //     }
-    // }
-
+    static navigationOptions = {
+        header:null,
+        headerStyle: {
+            position: 'absolute',
+            backgroundColor: 'transparent', 
+            
+            borderBottomWidth: 0
+        },
+        headerTintColor: 'transparent',
+     
+  
+    }
     render() {
 
-        // this.switchToLandscape();
+
 
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                
                 <Grid>
-                    <Section> {/* Light blue */}
-                        <Block xsSize="1/1" smSize="1/2" />
-                        <Block xsSize="1/1" smSize="1/2" />
-                        <Block xsSize="1/1" smSize="1/2" /> 
+                    <Section style={styles.selectBtn}>
+                        <Block xsSize="1/2" smSize="1/4">
+                            <View style={[styles.element, { backgroundColor: '#c3defe' },
+                            { borderRadius: '5' }, { height: 130 }, { marginBottom: 10 }, { marginRight: 10 }]}>
+                                <Text style={styles.text}>Score : 500</Text>
+                            </View>
+                        </Block>
+                        <Block xsSize="1/3" smSize="1/4">
+                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }, { marginRight: 10 }]}>
+                                <Text style={styles.text2}>Weekly Score: 700</Text>
+                            </View>
+                        </Block>
+                        <Block xsSize="1/3" smSize="1/4">
+                            <View style={[styles.element, { backgroundColor: '#02326b' }, { borderRadius: '5' }, { marginBottom: 10 }]}>
+                                <Text style={[styles.text2, styles.textLight]}>Monthly Score : 1050</Text>
+                            </View>
+                        </Block>
+
+                        <Block xsSize="1/3" smSize="1/4">
+                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }]}>
+                                <Text style={styles.text3}>Global Score : 2053</Text>
+                            </View>
+                        </Block>
+
                     </Section>
-                    <Section> {/* Dark blue */}
-                        <Block size="1/1" smSize="1/2" />
-                        <Block size="1/1" smSize="1/2" />
-                        <Block size="1/1" smSize="1/2" />
-                        <Block size="1/1" smSize="1/2" />
-                        <Block size="1/1" smSize="1/2" />
+
+                    <Section style={styles.playBtn}>
+                        <TouchableOpacity style={styles.btnLogin} onPress={this.goToQuestion}>
+                            <Block size={500}>
+                                <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: 20 }]}>
+                                    <Text style={styles.text}>Play</Text>
+                                </View>
+                            </Block>
+                        </TouchableOpacity>
                     </Section>
                 </Grid>
-
 
             </ImageBackground >
 
@@ -79,83 +98,62 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         flexDirection: 'row',
-    }
-    // firstRow: {
-    //     flex: 1,
-    //     width: 200,
-    //     height: 200,
-    //     flexDirection: 'column',
-    //     borderRadius: 20,
-    //     backgroundColor: 'white',
-    //     flexDirection: 'row',
-    //     marginLeft: 120,
-    //     // marginBottom:20,
-    //     borderColor: 'rgba(0, 0, 0, 0.35)',
-    //     borderStyle: "solid",
-    //     borderWidth: 4,
-    //     borderTopWidth: 0,
-    //     backgroundColor: '#5DBCD2',
-    // },
-    // firstField: {
-    //     flex: 1,
-    //     width: 200,
-    //     height: 200,
-    //     flexDirection: 'column',
-    //     borderRadius: 20,
-    //     backgroundColor: 'white',
-    //     flexDirection: 'row',
-    //     marginLeft: 120,
+    },
+    container: {
+        // backgroundColor: 'black',
+
+    },
+    // btnLogin: {
+    //     width:  90,
+    //     height: 70,
+    //     borderRadius: 45,
+    //     backgroundColor: 'red',
+    //     justifyContent: 'center',
     //     marginTop: 20,
-    //     borderColor: 'rgba(0, 0, 0, 0.35)',
-    //     borderStyle: "solid",
-    //     borderWidth: 4,
-    //     borderTopWidth: 0,
-    //     backgroundColor: '#5DBCD2',
+    //     marginBottom: 15
     // },
-    // secondInput: {
-    //     flex: 1,
-    //     width: 200,
-    //     height: 200,
-    //     flexDirection: 'column',
-    //     borderRadius: 20,
-    //     backgroundColor: 'white',
-    //     flexDirection: 'row',
-    //     backgroundColor: '#5DBCD2',
-    //     marginTop: 20,
-    //     borderColor: 'rgba(0, 0, 0, 0.35)',
-    //     borderStyle: "solid",
-    //     borderWidth: 4,
-    //     borderTopWidth: 0
-    // },
-    // secondRow: {
-    //     flex: 1,
-    //     width: 200,
-    //     height: 200,
-    //     flexDirection: 'column',
-    //     borderRadius: 20,
-    //     backgroundColor: 'white',
-    //     flexDirection: 'row',
-    //     borderColor: 'rgba(0, 0, 0, 0.35)',
-    //     borderStyle: "solid",
-    //     borderWidth: 4,
-    //     borderTopWidth: 0,
-    //     backgroundColor: '#5DBCD2',
+    element: {
+        height: 100,
+        justifyContent: 'center',
+    },
+    text: {
+        textAlign: 'center',
+        color: '#02326b',
+        fontSize: 30,
+    },
+    text2: {
+        textAlign: 'center',
+        color: '#02326b',
+        fontSize: 25,
+    },
+    text3: {
+        textAlign: 'center',
+        color: '#02326b',
+        fontSize: 25,
+    },
+    textLight: {
+        color: 'white',
+    },
+    selectBtn: {
+        flex: 1,
+        flexDirection: 'column',
+        width: 500,
+        // paddingTop:10,
+        marginLeft: 100,
+        justifyContent: 'center'
+    },
+    playBtn: {
+        height: 60,
+        marginBottom: 15,
+        marginLeft: 78,
 
-    // },
-    // daschIcon: {
-    //     marginTop: 30,
-    //     marginBottom: 30,
-    //     marginLeft: 80,
-    //     color: 'rgba(255, 255, 255, 0.7)'
-    // },
-    // textIcon: {
-
-
-    // },
+    },
 
 
 
 
 });
+
+
 
 

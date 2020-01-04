@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Dimensions, TouchableOpacity, Linking, Button } from 'react-native';
 import Dashboard from './Dashboard';
+import Question from './Question';
 import { StackNavigator } from 'react-navigation';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -13,7 +14,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-class App extends React.Component{
+class App extends React.Component {
+
+  static navigationOptions = {
+    header: null
+  }
 
   goToDashboard = () => {
     this.props.navigation.navigate('Dashboard');
@@ -28,63 +33,23 @@ class App extends React.Component{
           <Text style={styles.logoText}>Welcome!</Text>
         </View>
 
-        {/* <View style={styles.inputContainer}>
-          <Icon name={'ios-person'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
-          <TextInput
-            style={styles.input}
-            placeholder={'Username'}
-            placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-            underlineColorAndroid='transparent'
-          />
-        </View> */}
+        <TouchableOpacity style={styles.btnLogin} onPress={this.goToDashboard}>
 
-        {/* <View style={styles.inputContainer}>
-          <Icon name={'ios-lock'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
-          <TextInput
-            style={styles.input}
-            placeholder={'Password'}
-            secureTextEntry={this.state.showPass}
-            placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-            underlineColorAndroid='transparent'
-          />
+          <Icon name={'logo-facebook'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
 
-          <TouchableOpacity style={styles.btnEye} onPress={this.state.showPass}>
-            <Icon name={this.state.press == false ? 'ios-eye' : 'ios-eye-off'} size={26} color={'rgba(255, 255, 255, 0.7)'} />
-          </TouchableOpacity>
-
-        </View> */}
-
-        {/* <TouchableOpacity style={styles.btnLogin}>
-          <Text style={styles.text}>Log In</Text>
-        </TouchableOpacity> */}
-
-        {/* <TouchableOpacity style={styles.btnLogin} onPress={() => {
-          Linking.openURL(
-            'https://www.facebook.com/')}}>
-              <Icon name={'logo-facebook'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon}/>
-              onPress={this.goToDashboard}
-              title =Log in with Facebook;
           <Text style={styles.text}>Log in with Facebook</Text>
-        </TouchableOpacity> */}
 
-          <TouchableOpacity style={styles.btnLogin} onPress={this.goToDashboard}>
-          
-              <Icon name={'logo-facebook'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon}/>
-              {/* onPress={this.goToDashboard} */}
-              <Text style={styles.text}>Log in with Facebook</Text>
-        
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnLoginGoogle} onPress={() => {
           Linking.openURL(
-            'https://mail.google.com/mail/u/0/')}}>
-            <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon}/>
+            'https://mail.google.com/mail/u/0/')
+        }}>
+          <Icon name={'logo-google'} size={28} color={'rgba(255, 255, 255, 0.7)'} style={styles.inputIcon} />
           <Text style={styles.text}>Log in with Gmail</Text>
         </TouchableOpacity>
 
         {/* <Text style={styles.textReg}>Or if you don't have an account, Register.</Text> */}
-       
-
 
       </ImageBackground>
 
@@ -94,12 +59,13 @@ class App extends React.Component{
 
 const AppNavigator = createStackNavigator({
   Home: {
-    // header: 0,
     screen: App,
   },
   Dashboard: {
-    // header:null,
     screen: Dashboard
+  },
+  Question: {
+    screen: Question
   }
 });
 
@@ -145,20 +111,14 @@ const styles = StyleSheet.create({
     top: 8,
     left: 37
   },
-  // btnEye: {
-  //   position: 'absolute',
-  //   top: 8,
-  //   right: 37
-  // },
   btnLogin: {
     width: WIDTH - 55,
     height: 45,
     borderRadius: 45,
     backgroundColor: '#4285F4',
     justifyContent: 'center',
-    // alignContent: 'center',
     marginTop: 20,
-    marginBottom:15
+    marginBottom: 15
   },
   btnLoginGoogle: {
     width: WIDTH - 55,
@@ -166,7 +126,6 @@ const styles = StyleSheet.create({
     borderRadius: 45,
     backgroundColor: '#de5246',
     justifyContent: 'center',
-    // alignContent: 'center',
     marginTop: 20,
   },
   text: {
