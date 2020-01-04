@@ -48,24 +48,33 @@ export default class Dashboard extends Component {
                     <Section style={styles.selectBtn}>
                         <Block xsSize="1/2" smSize="1/4">
                             <View style={[styles.element, { backgroundColor: '#c3defe' },
-                            { borderRadius: '5' }, { height: 130 }, { marginBottom: 10 }, { marginRight: 10 }]}>
-                                <Text style={styles.text}>Score : 500</Text>
+                            { borderRadius: '5' }, { height: 130 }, { marginBottom: 10 }, { marginRight: 10 }]}> 
+                                <TouchableOpacity>
+                                    <Text style={styles.text}>Score : 500</Text>
+                                </TouchableOpacity>
                             </View>
                         </Block>
                         <Block xsSize="1/3" smSize="1/4">
-                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }, { marginRight: 10 }]}>
-                                <Text style={styles.text2}>Weekly Score: 700</Text>
+                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }, { marginRight: 10 }]}> 
+                                <TouchableOpacity>
+                                    <Text style={styles.text2}>Weekly Score: 700</Text>
+                                </TouchableOpacity>
                             </View>
                         </Block>
+
                         <Block xsSize="1/3" smSize="1/4">
-                            <View style={[styles.element, { backgroundColor: '#02326b' }, { borderRadius: '5' }, { marginBottom: 10 }]}>
-                                <Text style={[styles.text2, styles.textLight]}>Monthly Score : 1050</Text>
+                            <View style={[styles.element, { backgroundColor: '#02326b' }, { borderRadius: '5' }, { marginBottom: 10 }]}> 
+                                <TouchableOpacity>
+                                    <Text style={[styles.text2, styles.textLight]}>Monthly Score : 1050</Text>
+                                </TouchableOpacity>
                             </View>
                         </Block>
 
                         <Block xsSize="1/3" smSize="1/4">
                             <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }]}>
-                                <Text style={styles.text3}>Global Score : 2053</Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.text3}>Global Score : 2053</Text>
+                                </TouchableOpacity>
                             </View>
                         </Block>
 
