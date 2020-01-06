@@ -13,29 +13,28 @@ export default class Question extends Component {
     static navigationOptions = {
         header:null,
         headerStyle: {
-            position: 'absolute',
             backgroundColor: 'transparent', 
-            
             borderBottomWidth: 0
         },
         headerTintColor: 'transparent',
-     
   
     }
 
     render() {
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                <Grid horizontal>
-                    <Section style={styles.prasanje}>
+                <Grid>
+                    <Section style={styles.question}>
                         <Block>
                             <View>
-                                {/* <Text>Koj e prviot pretsedatel na Republika Makedonija?</Text> */}
+                                <Text style={styles.questionTxt}>Koj e prviot pretsedatel na Republika Makedonija?</Text>
                             </View>
                         </Block>
                         
                     </Section>
-                  
+                </Grid>
+
+                <Grid horizontal>
 
                     <Section style={styles.answers}>
                         <Block>
@@ -87,28 +86,36 @@ export default class Question extends Component {
 
 const styles = StyleSheet.create({
     backgroundContainer: {
-        flex: 3,
+        flex: 1,
         width: null,
         height: null,
-        // flexDirection: 'row',
     },
     answers: {
         flex: 1,
         flexDirection: 'row',
-        marginTop:200,
+        marginTop:0,
         marginLeft:20
     },
     answers2: {
         flex: 1,
         flexDirection: 'row',
-        marginTop:200
     },
-    prasanje: {
-        display:'flex',
-        justifyContent:'center'
+    question: {
+        margin:80,
+        width:500,
+        height:50,
+        backgroundColor:'transparent',
+        borderRadius:8,  
+    },
+    questionTxt:{
+        padding:15,
+        paddingLeft:10,
+        color:'white',
+        fontWeight:'bold',
+        fontSize: 20, 
     },
     text: {
-        padding:5,
+        padding:15,
         color:'white',
         fontWeight:'bold',
         fontSize: 16

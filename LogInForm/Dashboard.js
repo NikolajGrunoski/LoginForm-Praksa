@@ -14,7 +14,6 @@ import bgImage from './assets/images/background.jpg';
 import logo from './assets/images/logo.png';
 
 
-
 export default class Dashboard extends Component {
     componentDidMount() {
         ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
@@ -24,24 +23,16 @@ export default class Dashboard extends Component {
         this.props.navigation.navigate('Question');
     }
 
- 
-
     static navigationOptions = {
         header:null,
-        headerStyle: {
-            position: 'absolute',
+        headerStyle: {   
             backgroundColor: 'transparent', 
-            
             borderBottomWidth: 0
         },
         headerTintColor: 'transparent',
-     
   
     }
     render() {
-
-
-
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
                 <Grid>
@@ -108,19 +99,6 @@ const styles = StyleSheet.create({
         height: null,
         flexDirection: 'row',
     },
-    container: {
-        // backgroundColor: 'black',
-
-    },
-    // btnLogin: {
-    //     width:  90,
-    //     height: 70,
-    //     borderRadius: 45,
-    //     backgroundColor: 'red',
-    //     justifyContent: 'center',
-    //     marginTop: 20,
-    //     marginBottom: 15
-    // },
     element: {
         height: 100,
         justifyContent: 'center',
@@ -147,7 +125,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         width: 500,
-        // paddingTop:10,
         marginLeft: 100,
         justifyContent: 'center'
     },
@@ -155,11 +132,7 @@ const styles = StyleSheet.create({
         height: 60,
         marginBottom: 15,
         marginLeft: 78,
-
     },
-
-
-
 
 });
 

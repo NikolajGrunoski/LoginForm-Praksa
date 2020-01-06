@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Dimensions, TouchableOpacity, Linking, Button } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image,Dimensions, TouchableOpacity, Linking } from 'react-native';
 import Dashboard from './Dashboard';
 import Question from './Question';
 import { StackNavigator } from 'react-navigation';
@@ -23,7 +23,6 @@ class App extends React.Component {
   goToDashboard = () => {
     this.props.navigation.navigate('Dashboard');
   }
-
 
   render() {
     return (
