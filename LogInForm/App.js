@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image,Dimensions, TouchableOpacity, Linking } from 'react-native';
 import Dashboard from './Dashboard';
 import Question from './Question';
-import { StackNavigator } from 'react-navigation';
+import History from './History';
+import DatePicker from './DatePicker';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -10,7 +11,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import bgImage from './assets/images/background.jpg';
 import logo from './assets/images/logo.png';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import { AppLoading } from 'expo';
+
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -48,8 +49,6 @@ class App extends React.Component {
           <Text style={styles.text}>Log in with Gmail</Text>
         </TouchableOpacity>
 
-        {/* <Text style={styles.textReg}>Or if you don't have an account, Register.</Text> */}
-
       </ImageBackground>
 
     )
@@ -65,6 +64,12 @@ const AppNavigator = createStackNavigator({
   },
   Question: {
     screen: Question
+  },
+  History: {
+    screen: History
+  },
+  DatePicker: {
+    screen: DatePicker
   }
 });
 
@@ -132,12 +137,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center'
   },
-  textReg: {
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontSize: 16,
-    textAlign: 'center',
-    marginTop: 20
-  }
 
 });
 

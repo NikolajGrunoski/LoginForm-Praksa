@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
-import { render } from 'react-dom';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-// import App from './App';
-// import Icon from 'react-native-vector-icons/Ionicons';
-import { HeaderButton, Item, headerRight } from 'react-navigation-header-buttons';
+import { StyleSheet, ImageBackground, TouchableOpacity, View, Text,Icon } from 'react-native';
 import { ScreenOrientation } from 'expo';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 
-
 import bgImage from './assets/images/background.jpg';
-import logo from './assets/images/logo.png';
-
 
 export default class Dashboard extends Component {
     componentDidMount() {
@@ -21,6 +12,10 @@ export default class Dashboard extends Component {
 
     goToQuestion = () => {
         this.props.navigation.navigate('Question');
+    }
+
+    goToHistory = () => {
+        this.props.navigation.navigate('History');
     }
 
     static navigationOptions = {
@@ -80,6 +75,21 @@ export default class Dashboard extends Component {
                             </Block>
                         </TouchableOpacity>
                     </Section>
+
+                    
+                  
+                </Grid>
+
+                <Grid>
+                    <Section style={styles.historyBtn}>
+                        <TouchableOpacity  onPress={this.goToHistory}>
+                            <Block size={100}>
+                                <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: 20 }]}>
+                                    <Text style={styles.text}>History</Text>
+                                </View>
+                            </Block>
+                        </TouchableOpacity>
+                    </Section>
                 </Grid>
 
             </ImageBackground >
@@ -133,6 +143,14 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginLeft: 78,
     },
+    historyBtn: {
+        flex:1,
+        height: 60,
+        width:100,
+        marginRight:20,
+        marginTop: 20
+        
+    }
 
 });
 
