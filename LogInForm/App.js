@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import Question from './Question';
 import History from './History';
 import DatePicker from './DatePicker';
+// import TableQuestions from './Table'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -70,7 +71,10 @@ const AppNavigator = createStackNavigator({
   },
   DatePicker: {
     screen: DatePicker
-  }
+  },
+  // TableQuestions: {
+  //   screen: TableQuestions
+  // }
 });
 
 const styles = StyleSheet.create({

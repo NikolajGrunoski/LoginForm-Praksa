@@ -6,8 +6,10 @@ import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-ta
 import Icon from 'react-native-vector-icons/Ionicons';
 import { List, ListItem, FlatList } from 'react-native-elements'
 
-import List2 from './List2';
+import TableQuestions from './Table';
+import HeaderHistory from './HeaderHistory';
 import bgImage from './assets/images/background.jpg';
+
 
 
 export default class History extends Component {
@@ -28,67 +30,19 @@ export default class History extends Component {
         this.props.navigation.navigate('DatePicker');
     }
 
-
-
-
-
-    constructor(props) {
-        super(props);
-        this.state = {
-        //   tableHead: ['Head'],
-          tableData: [
-            [`1. Koj bil prviot pretsedatel na Republika Makedonija? ${ <Icon name={'ios-checkmark-circle'} size={28} color={'green'}/>}`],
-            ['2. Kolku kontinenti postojat?'],
-            ['3. Koja godina e roden Aleksandar III Makedoniski?'],
-            ['4. Koj datum se slavi Pravoslaven Bozik?'],
-            ['5. Kolku godini vladee kralicata Elizabeta?'],
-            ['5. Vo koj fudbalski klub igra Kristiano Ronaldo?'],
-            ['5. Vo koj NBA klub igrase Pero Antic?'],
-          ],
-
-        }
-    }
-
     render() {
-        const state = this.state;
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                <Grid>
-                    <Section>
-                        <View style={[styles.header, { backgroundColor: '#c3defe' }, { height: 80 }, { width: "100%" }]}>
-                            <Text style={styles.text}>Questions History</Text>
-                            <TouchableOpacity style={styles.dateBtn} onPress={this.goToDatePicker}>
-                                <Block size={100}>
-                                    <View style={styles.element}>
-                                        <Text style={styles.text2}>Select Date</Text>
-                                    </View>
-                                </Block>
-                            </TouchableOpacity>
-
-                        </View>
-                    </Section>
-
-                </Grid>
-                <Grid>
-                    <Section>
-                        <View style={styles.container}>
-                            <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}}>
-                            <Row data={state.tableHead} style={styles.head} textStyle={styles.text3}/>
-                            <Rows data={state.tableData} style={styles.tableData} textStyle={styles.text3}/>
-                            </Table>
-                        </View>
-                    </Section>
-                </Grid>
-
-
-
-           
-
+                <HeaderHistory />
+                <TableQuestions />
             </ImageBackground>
         )
     }
 
 }
+
+
+
 
 const styles = StyleSheet.create({
     backgroundContainer: {
