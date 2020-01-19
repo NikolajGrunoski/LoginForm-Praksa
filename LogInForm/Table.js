@@ -3,11 +3,12 @@ import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'reac
 import { List, ListItem, FlatList,} from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import Question from './Question';
+import { createStackNavigator } from 'react-navigation-stack';
 
 
-// goToQuestion = () => {
-//     this.props.navigation.navigate('Question');
-// }
+goToQuestion = () => {
+    this.props.navigation.navigate('Question');
+}
 
 // static navigationOptions = {
 //     header:null,
@@ -55,7 +56,7 @@ const list = [
 class TableQuestions extends Component {
 
     render() {
-        
+        // const { navigate } = this.props.navigation;
         return (
             <View>
                 {
