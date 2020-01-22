@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
-import { List, ListItem, FlatList } from 'react-native-elements'
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 
 
 class HeaderHistory extends Component {
-    render () {
+    render() {
         return (
             <Grid>
                 <Section>
@@ -24,7 +23,7 @@ class HeaderHistory extends Component {
             </Grid>
         )
     }
-  
+
 }
 
 const styles = StyleSheet.create({

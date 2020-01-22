@@ -18,6 +18,10 @@ export default class Dashboard extends Component {
         this.props.navigation.navigate('History');
     }
 
+    goToSettings = () => {
+        this.props.navigation.navigate('Settings');
+    }
+
     static navigationOptions = {
         header:null,
         headerStyle: {   
@@ -90,6 +94,16 @@ export default class Dashboard extends Component {
                             </Block>
                         </TouchableOpacity>
                     </Section>
+                
+                    <Section style={styles.settingsBtn}>
+                        <TouchableOpacity  onPress={this.goToSettings}>
+                            <Block >
+                                <View >
+                                    <Text style={styles.text4}>Settings</Text>
+                                </View>
+                            </Block>
+                        </TouchableOpacity>
+                    </Section>
                 </Grid>
 
             </ImageBackground >
@@ -155,7 +169,14 @@ const styles = StyleSheet.create({
         textAlign:'center',
         paddingTop:40,
         
-    }
+    },
+    settingsBtn:{
+        width:100,
+        height:100,
+        backgroundColor:'#02326b',
+        marginTop:20
+        
+    },
 
 });
 
