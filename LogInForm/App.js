@@ -15,6 +15,8 @@ import logo from './assets/images/logo.png';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
+
+
 const { width: WIDTH } = Dimensions.get('window')
 
 class App extends React.Component {
