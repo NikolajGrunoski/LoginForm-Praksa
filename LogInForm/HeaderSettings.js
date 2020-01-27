@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
-import { Grid, Section, Block } from 'react-native-responsive-layout';
+import { StyleSheet, View, Text, } from 'react-native';
+import { Grid, Section } from 'react-native-responsive-layout';
 
 
 class HeaderSettings extends Component {
@@ -8,7 +8,7 @@ class HeaderSettings extends Component {
         return (
             <Grid>
                 <Section>
-                    <View style={[styles.header, { backgroundColor: '#c3defe' }, { height: 80 }, { width: "100%" }]}>
+                    <View style={[styles.header, { backgroundColor: '#006AB8' }, { height: 80 }, { width: "100%" }]}>
                         <Text style={styles.text}>Settings</Text>
 
 
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 22,
         paddingTop: 25,
-        paddingLeft: 20
+        paddingLeft: 20,
+        color: 'white'
     },
     header: {
         flex: 1,

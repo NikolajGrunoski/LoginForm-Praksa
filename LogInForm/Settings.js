@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, Button, Switch } from 'react-native';
+import { View } from 'react-native';
 import { ScreenOrientation } from 'expo';
-import { Grid, Section, Block } from 'react-native-responsive-layout';
 import HeaderSettings from './HeaderSettings';
 import BodySettings from './BodySettings';
 
-import bgImage from './assets/images/background.jpg';
 
 
 export default class Settings extends Component {
     componentDidMount() {
-        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+        ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
     }
 
     static navigationOptions = {
@@ -25,11 +23,11 @@ export default class Settings extends Component {
 
     render() {
         return (
-            <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                <HeaderSettings/>
-                <BodySettings/>
-            </ImageBackground>
-            
+            <View style={styles.background} >
+                <HeaderSettings />
+                <BodySettings />
+            </View>
+
         )
     }
 }
@@ -39,16 +37,13 @@ const styles = {
         flex: 2,
         width: null,
         height: null,
-        // flexDirection: 'row',
+        backgroundColor:'white'
     },
-    
-    // text: {
-    //     fontSize: 22,
-    //     paddingTop: 25,
-    //     paddingLeft: 20
-    // },
-    // header: {
-    //     flex: 1,
-    //     flexDirection: 'row',
-    // },
+    background: {
+        backgroundColor: '#005BA1',
+        width: '100%',
+        height: '100%',
+        
+    }
+
 }

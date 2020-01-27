@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text,Icon } from 'react-native';
+import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
 import { ScreenOrientation } from 'expo';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 
@@ -23,13 +23,13 @@ export default class Dashboard extends Component {
     }
 
     static navigationOptions = {
-        header:null,
-        headerStyle: {   
-            backgroundColor: 'transparent', 
+        header: null,
+        headerStyle: {
+            backgroundColor: 'transparent',
             borderBottomWidth: 0
         },
         headerTintColor: 'transparent',
-  
+
     }
     render() {
         return (
@@ -38,14 +38,14 @@ export default class Dashboard extends Component {
                     <Section style={styles.selectBtn}>
                         <Block xsSize="1/2" smSize="1/4">
                             <View style={[styles.element, { backgroundColor: '#c3defe' },
-                            { borderRadius: '5' }, { height: 130 }, { marginBottom: 10 }, { marginRight: 10 }]}> 
+                            { borderRadius: '5' }, { height: 130 }, { marginBottom: 10 }, { marginRight: 10 }]}>
                                 <TouchableOpacity>
                                     <Text style={styles.text}>Score : 500</Text>
                                 </TouchableOpacity>
                             </View>
                         </Block>
                         <Block xsSize="1/3" smSize="1/4">
-                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }, { marginRight: 10 }]}> 
+                            <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: '5' }, { marginRight: 10 }]}>
                                 <TouchableOpacity>
                                     <Text style={styles.text2}>Weekly Score: 700</Text>
                                 </TouchableOpacity>
@@ -53,7 +53,7 @@ export default class Dashboard extends Component {
                         </Block>
 
                         <Block xsSize="1/3" smSize="1/4">
-                            <View style={[styles.element, { backgroundColor: '#02326b' }, { borderRadius: '5' }, { marginBottom: 10 }]}> 
+                            <View style={[styles.element, { backgroundColor: '#02326b' }, { borderRadius: '5' }, { marginBottom: 10 }]}>
                                 <TouchableOpacity>
                                     <Text style={[styles.text2, styles.textLight]}>Monthly Score : 1050</Text>
                                 </TouchableOpacity>
@@ -71,7 +71,7 @@ export default class Dashboard extends Component {
                     </Section>
 
                     <Section style={styles.playBtn}>
-                        <TouchableOpacity  onPress={this.goToQuestion}>
+                        <TouchableOpacity onPress={this.goToQuestion}>
                             <Block size={500}>
                                 <View style={[styles.element, { backgroundColor: '#4e9dfc' }, { borderRadius: 20 }]}>
                                     <Text style={styles.text}>Play</Text>
@@ -80,13 +80,13 @@ export default class Dashboard extends Component {
                         </TouchableOpacity>
                     </Section>
 
-                    
-                  
+
+
                 </Grid>
 
                 <Grid >
                     <Section style={styles.historyBtn}>
-                        <TouchableOpacity  onPress={this.goToHistory}>
+                        <TouchableOpacity onPress={this.goToHistory}>
                             <Block >
                                 <View >
                                     <Text style={styles.text4}>History</Text>
@@ -94,9 +94,9 @@ export default class Dashboard extends Component {
                             </Block>
                         </TouchableOpacity>
                     </Section>
-                
+
                     <Section style={styles.settingsBtn}>
-                        <TouchableOpacity  onPress={this.goToSettings}>
+                        <TouchableOpacity onPress={this.goToSettings}>
                             <Block >
                                 <View >
                                     <Text style={styles.text4}>Settings</Text>
@@ -157,25 +157,25 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginLeft: 78,
     },
-    historyBtn:{
-        width:100,
-        height:100,
-        backgroundColor:'#02326b',
-        
+    historyBtn: {
+        width: 100,
+        height: 100,
+        backgroundColor: '#02326b',
+
     },
-    text4:{
-        color:'white',
-        fontSize:22,
-        textAlign:'center',
-        paddingTop:40,
-        
+    text4: {
+        color: 'white',
+        fontSize: 22,
+        textAlign: 'center',
+        paddingTop: 40,
+
     },
-    settingsBtn:{
-        width:100,
-        height:100,
-        backgroundColor:'#02326b',
-        marginTop:20
-        
+    settingsBtn: {
+        width: 100,
+        height: 100,
+        backgroundColor: '#02326b',
+        marginTop: 20
+
     },
 
 });

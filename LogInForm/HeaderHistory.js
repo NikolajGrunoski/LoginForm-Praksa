@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, } from 'react-native';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 
 
@@ -8,7 +8,7 @@ class HeaderHistory extends Component {
         return (
             <Grid>
                 <Section>
-                    <View style={[styles.header, { backgroundColor: '#c3defe' }, { height: 80 }, { width: "100%" }]}>
+                    <View style={[styles.header, { backgroundColor: '#006AB8' }, { height: 80 }, { width: "100%" }]}>
                         <Text style={styles.text}>Questions History</Text>
                         <TouchableOpacity style={styles.dateBtn} onPress={this.goToDatePicker}>
                             <Block size={100}>
@@ -35,12 +35,14 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 22,
         paddingTop: 25,
-        paddingLeft: 20
+        paddingLeft: 20,
+        color:'white'
     },
     text2: {
         paddingTop: 5,
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:'white'
     },
     dateBtn: {
         paddingLeft: 150,
@@ -57,19 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    container: {
-        flex: 1,
-        padding: 16,
-        paddingTop: 30,
-    },
-    text3: {
-        margin: 6,
-        fontSize: 16,
-        fontWeight: '500'
-    },
-    tableData: {
-        backgroundColor: 'white',
-    }
+    
 
 });
 

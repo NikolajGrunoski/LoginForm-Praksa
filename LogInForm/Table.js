@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, } from 'react-native';
-import { List, ListItem, FlatList,} from 'react-native-elements';
-import { StackNavigator } from 'react-navigation';
-import Question from './Question';
-import { createStackNavigator } from 'react-navigation-stack';
+import { View, } from 'react-native';
+import { List, ListItem, FlatList, } from 'react-native-elements';
+
 
 
 goToQuestion = () => {
@@ -21,8 +19,8 @@ goToQuestion = () => {
 // }
 
 const list = [
-    {   
-        
+    {
+
         title: '1. Koj bil prviot pretsedatel na Republika Makedonija?',
         // icon: 'av-timer'
     },
@@ -68,7 +66,7 @@ class TableQuestions extends Component {
                             bottomDivider
                             chevron
                             onPress={() => this.props.navigation.navigate('Question')}
-                            
+
                         />
                     ))
                 }

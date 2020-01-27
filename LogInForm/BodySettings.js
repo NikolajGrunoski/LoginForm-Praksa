@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Text, Switch, Picker, Button } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button } from 'react-native';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
-import { BorderlessButton } from "react-native-gesture-handler";
-import App from './App';
+
+
 
 class BodySettings extends Component {
 
@@ -54,12 +54,12 @@ class BodySettings extends Component {
 
     render() {
         return (
-            <Grid>
+            <Grid >
                 <Section>
-                    <View style={styles.container}>
+                    <View style={styles.container} >
                         <Text style={styles.text}>Notification</Text>
                         <Switch
-                            style={styles.switchBtn}
+                            style={styles.switchBtnOne}
                             onValueChange={this.toggleSwitch}
                             value={this.state.switchValue} />
                         <Text style={styles.text}>{this.state.switchValue ? ' ON' : ' OFF'}</Text>
@@ -72,11 +72,14 @@ class BodySettings extends Component {
                 <Section>
                     <View style={styles.container}>
                         <Text style={styles.text}>Chose a language</Text>
-                        <Button
-                            onPress={this.onPressButton}
-                            title="Press Me"
-                            color="#841584"
-                        />
+                        <View style={styles.choseBtn}>
+                            <Button
+                                onPress={this.onPressButton}
+                                title="Chose"
+                                color="white"
+
+                            />
+                        </View>
 
                     </View>
                 </Section>
@@ -84,7 +87,7 @@ class BodySettings extends Component {
                     <View style={styles.container}>
                         <Text style={styles.text}>Change Theme</Text>
                         <Switch
-                            style={styles.switchBtn}
+                            style={styles.switchBtnTwo}
                             onValueChange={this.toggleSwitch}
                             value={this.state.switchValue} />
                         <Text style={styles.text}>{this.state.switchValue ? ' Red' : ' Blue'}</Text>
@@ -96,23 +99,23 @@ class BodySettings extends Component {
                 </Section>
 
 
-               
+
                 <Section>
                     <View style={styles.container}>
                         <Text style={styles.text}>Version v.01.0</Text>
-                       
+
                     </View>
                 </Section>
                 <Section>
                     <View style={styles.container}>
-                        
+
                         <TouchableOpacity>
                             <Text style={styles.text}>Privacy Policy</Text>
                         </TouchableOpacity>
                     </View>
                 </Section>
                 <Section >
-                    <TouchableOpacity  style={styles.logBtn} onPress={this.goToApp}>
+                    <TouchableOpacity style={styles.logBtn} onPress={this.goToApp}>
                         <Block size={200}>
                             <View style={styles.element}>
                                 <Text style={styles.textBtn}>Logout</Text>
@@ -141,15 +144,22 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        marginTop: 12,
-        marginLeft: 20
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        borderBottomColor: 'white',
+        borderBottomWidth: 1
+
     },
-    switchBtn: {
-        marginLeft: 40,
-        // backgroundColor:'#c3defe',
+    switchBtnOne: {
+        marginLeft: 130,
+        borderRadius: 5,
+        borderColor: '#c3defe'
+    },
+    switchBtnTwo: {
+        marginLeft: 95,
         borderRadius: 5,
         borderColor: '#c3defe'
     },
@@ -161,25 +171,28 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         alignSelf: 'center',
-        color:'white'
+        color: 'white'
     },
     textBtn: {
         fontSize: 20,
         alignSelf: 'center',
-        paddingTop:5,
-        color:'white',
-        fontWeight:'bold'
+        paddingTop: 5,
+        color: 'white',
+        fontWeight: 'bold'
     },
     element: {
         backgroundColor: '#d61c0f',
         borderRadius: 5,
         height: 40,
-        marginTop: 20,
+        marginTop: 40,
         marginLeft: 20
     },
-    logBtn:{
-        paddingTop:10,
-       
+    logBtn: {
+        paddingTop: 10,
+    },
+    choseBtn: {
+        paddingLeft: 70,
+
     }
 
 });
