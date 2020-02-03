@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button } from 'react-native';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 
-
+let addItem = switchBtnOne => {
+    db.ref('/switchBtnOne').push({
+        switchBtnOne: switchBtnOne
+    });
+};
 
 class BodySettings extends Component {
 
@@ -20,12 +24,26 @@ class BodySettings extends Component {
     }
     state = { switchValue: false }
     toggleSwitch = (value) => {
-
         this.setState({ switchValue: value })
     }
     goToApp = () => {
         this.props.navigation.navigate('App');
     }
+
+    state = {
+        name: ''
+    };
+
+    handleChange = e => {
+        this.setState({
+            switchBtnTwo: e.nativeEvent.button
+        });
+    };
+    handleSubmit = () => {
+        addItem(this.state.switchBtnOne);
+        Alert.alert('Item saved successfully');
+    };
+    cd
 
     onPressButton() {
         return (
