@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button, TouchableHighlight, Modal, navigation  } from 'react-native';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
+import { db } from './Database';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import App from './App';
 
-let addItem = switchBtnOne => {
-    db.ref('/switchBtnOne').push({
-        switchBtnOne: switchBtnOne
+
+let addItem = settings => {
+    db.ref('/settings').push({
+        notification: settings,
+        theme: settings,
+        // language: settings
     });
 };
 
@@ -22,55 +29,86 @@ class BodySettings extends Component {
         headerTintColor: 'transparent',
 
     }
-    state = { switchValue: false }
-    toggleSwitch = (value) => {
-        this.setState({ switchValue: value })
-    }
+
     goToApp = () => {
         this.props.navigation.navigate('App');
+       
     }
-
-    state = {
-        name: ''
-    };
-
-    handleChange = e => {
-        this.setState({
-            switchBtnTwo: e.nativeEvent.button
+    toggleSwitch = (value) => {
+        this.setState({ notification: !this.state.notification });
+        db.ref('/settings').push({
+            notification: !this.state.notification,
         });
+    }
+    toggleSwitch1 = (value) => {
+        this.setState({ theme: !this.state.theme });
+        db.ref('/settings').push({
+            theme: !this.state.theme
+        });
+    }
+    handleSubmit() {
+        Alert.alert('Settings Saved');
+        // Alert.alert(this.state.notification);
+        // Alert.alert(this.state.theme);
     };
-    handleSubmit = () => {
-        addItem(this.state.switchBtnOne);
-        Alert.alert('Item saved successfully');
-    };
-    cd
 
-    onPressButton() {
-        return (
-            <View style={styles.containerLang}>
 
-                <Text style={styles.text}>{this.state.choosenLabel}</Text>
 
-                <Text style={styles.text}>{this.state.choosenindex}</Text>
-                <Picker
-                    selectedValue={this.state.choosenLabel}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({ choosenLabel: itemValue, choosenindex: itemIndex })
-                    }>
-                    <Picker.Item label="English" value="word1" />
-                    <Picker.Item label="Macedonian" value="word2" />
-                    <Picker.Item label="Serbian" value="word3" />
-                    <Picker.Item label="French" value="word4" />
-                    <Picker.Item label="German" value="word5" />
-
-                </Picker>
-            </View>
-        )
+    constructor(props) {
+        super(props),
+            this.state = {
+                notification: true,
+                theme: false,
+                pickerSelection: 'Default value!',
+                pickerDisplayed: false
+            }
     }
 
-    state = { choosenLabel: '', choosenindex: '' }
+    setPickerValue(newValue) {
+        // this.setState({ language: !this.state.language });
+        this.setState({
+            pickerSelection: newValue
+        })
+
+        this.togglePicker();
+        // db.ref('/settings').push({
+        //     language: !this.state.language
+        // });
+    }
+
+    togglePicker() {
+        // this.setState({ language: !this.state.language });
+        this.setState({
+            pickerDisplayed: !this.state.pickerDisplayed
+        })
+        // db.ref('/settings').push({
+        //     language: !this.state.language
+        // });
+    }
 
     render() {
+        const pickerValues = [
+            {
+                title: 'English',
+                value: 'english'
+            },
+            {
+                title: 'Macedonian',
+                value: 'macedonian'
+            },
+            {
+                title: 'Serbian',
+                value: 'serbian'
+            },
+            {
+                title: 'French',
+                value: 'french'
+            },
+            {
+                title: 'German',
+                value: 'german'
+            }
+        ]
         return (
             <Grid >
                 <Section>
@@ -79,67 +117,84 @@ class BodySettings extends Component {
                         <Switch
                             style={styles.switchBtnOne}
                             onValueChange={this.toggleSwitch}
-                            value={this.state.switchValue} />
-                        <Text style={styles.text}>{this.state.switchValue ? ' ON' : ' OFF'}</Text>
-
-
+                            value={this.state.notification} />
+                        <Text style={styles.text}>{this.state.notification ? ' ON' : ' OFF'}</Text>
                     </View>
-
-
                 </Section>
+
                 <Section>
                     <View style={styles.container}>
                         <Text style={styles.text}>Chose a language</Text>
                         <View style={styles.choseBtn}>
-                            <Button
-                                onPress={this.onPressButton}
-                                title="Chose"
-                                color="white"
+                            <Button onPress={() => this.togglePicker()} title={"Chose"} style={styles.text} />
 
-                            />
+                            <Modal visible={this.state.pickerDisplayed} animationType={"slide"} transparent={true}>
+                                <View style={{
+                                    margin: 20, padding: 20,
+                                    backgroundColor: '#efefef',
+                                    bottom: 20,
+                                    left: 20,
+                                    right: 20,
+                                    alignItems: 'center',
+                                    position: 'absolute'
+                                }}>
+                                    <Text>Please chose a language</Text>
+                                    {pickerValues.map((value, index) => {
+                                        return <TouchableHighlight key={index} onPress={() => this.setPickerValue(value.value)} style={{ paddingTop: 4, paddingBottom: 4 }}>
+                                            <Text>{value.title}</Text>
+                                        </TouchableHighlight>
+                                    })}
+                                    <TouchableHighlight onPress={() => this.togglePicker()} style={{ paddingTop: 4, paddingBottom: 4 }}>
+                                        <Text style={{ color: '#999' }}>Cancel</Text>
+                                    </TouchableHighlight>
+                                </View>
+                            </Modal>
                         </View>
-
                     </View>
+        
                 </Section>
+
                 <Section>
                     <View style={styles.container}>
                         <Text style={styles.text}>Change Theme</Text>
                         <Switch
                             style={styles.switchBtnTwo}
-                            onValueChange={this.toggleSwitch}
-                            value={this.state.switchValue} />
-                        <Text style={styles.text}>{this.state.switchValue ? ' Red' : ' Blue'}</Text>
-
-
+                            onValueChange={this.toggleSwitch1}
+                            value={this.state.theme} />
+                        <Text style={styles.text}>{this.state.theme ? ' Red' : ' Blue'}</Text>
                     </View>
-
-
                 </Section>
-
-
 
                 <Section>
                     <View style={styles.container}>
                         <Text style={styles.text}>Version v.01.0</Text>
-
                     </View>
                 </Section>
+
                 <Section>
                     <View style={styles.container}>
-
                         <TouchableOpacity>
                             <Text style={styles.text}>Privacy Policy</Text>
                         </TouchableOpacity>
                     </View>
                 </Section>
                 <Section >
-                    <TouchableOpacity style={styles.logBtn} onPress={this.goToApp}>
-                        <Block size={200}>
+                    <TouchableOpacity style={styles.logBtn} onPress={() => navigation.navigate('App')}>
+                        <Block size={180}>
                             <View style={styles.element}>
                                 <Text style={styles.textBtn}>Logout</Text>
                             </View>
                         </Block>
                     </TouchableOpacity>
+
+                    <TouchableHighlight
+                        style={styles.button}
+                        underlayColor="white"
+                        onPress={this.handleSubmit}>
+                        <Text style={styles.textBtn}>Save</Text>
+                    </TouchableHighlight>
+
+
                 </Section>
             </Grid>
 
@@ -210,8 +265,26 @@ const styles = StyleSheet.create({
     },
     choseBtn: {
         paddingLeft: 70,
+        
+    },
+    button: {
+        backgroundColor: '#006AB8',
+        borderRadius: 5,
+        height: 40,
+        width: 140,
+        marginTop: 50,
+        marginLeft: 30,
+        marginRight: 20,
+    },
 
-    }
+
+    paragraph: {
+        margin: 24,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#34495e',
+    },
 
 });
 
