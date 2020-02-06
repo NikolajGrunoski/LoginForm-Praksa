@@ -84,11 +84,11 @@ export default class Dashboard extends Component {
 
                 </Grid>
 
-                <Grid >
+                <Grid>
                     <Section style={styles.historyBtn}>
                         <TouchableOpacity onPress={this.goToHistory}>
                             <Block >
-                                <View >
+                                <View>
                                     <Text style={styles.text4}>History</Text>
                                 </View>
                             </Block>
@@ -161,6 +161,8 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: '#02326b',
+        marginTop: 20,
+        borderRadius:5,
 
     },
     text4: {
@@ -174,9 +176,11 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: '#02326b',
-        marginTop: 20
-
+        marginTop: 20,
+        borderRadius:5
     },
+
+
 
 });
 
