@@ -79,9 +79,6 @@ export default class Dashboard extends Component {
                             </Block>
                         </TouchableOpacity>
                     </Section>
-
-
-
                 </Grid>
 
                 <Grid>
@@ -161,23 +158,28 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: '#02326b',
-        marginTop: 20,
+        marginTop: 50,
         borderRadius:5,
-
+        position:'relative',
+        right:50,
+        
     },
     text4: {
         color: 'white',
         fontSize: 22,
         textAlign: 'center',
         paddingTop: 40,
+        paddingLeft:10
 
     },
     settingsBtn: {
         width: 100,
         height: 100,
         backgroundColor: '#02326b',
-        marginTop: 20,
-        borderRadius:5
+        marginTop: 30,
+        borderRadius:5,
+        position:'relative',
+        right:50
     },
 
 

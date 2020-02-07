@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button, TouchableHighlight, Modal, navigation  } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity, View, Text, Switch, Picker, Button, TouchableHighlight, Modal, navigation } from 'react-native';
 import { Grid, Section, Block } from 'react-native-responsive-layout';
 import { db } from './Database';
 import { createAppContainer } from 'react-navigation';
@@ -32,7 +32,7 @@ class BodySettings extends Component {
 
     goToApp = () => {
         this.props.navigation.navigate('App');
-       
+
     }
     toggleSwitch = (value) => {
         this.setState({ notification: !this.state.notification });
@@ -86,6 +86,13 @@ class BodySettings extends Component {
         // });
     }
 
+    setupButtonsListenr(userId) {
+        firebase.database().ref('settings/' + userId).on('value', (snapshot) => {
+            const notification = snapshot.val().notification;
+            console.log("New high score: " + notification);
+        });
+    }
+
     render() {
         const pickerValues = [
             {
@@ -109,6 +116,23 @@ class BodySettings extends Component {
                 value: 'german'
             }
         ]
+        // export function updateNotification(notification, updateComplete) {
+        //     notification.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+        //     console.log("Updating food in firebase");
+
+        //     firebase.firestore()
+        //         .collection('settings')
+        //         .doc(food.id).set(notification)
+        //         .then(() => updateComplete(notification))
+        //         .catch((error) => console.log(error));
+        // }
+        function storeButtons(userId, score) {
+            firebase.database().ref('settings/' + userId).set({
+                notification: true
+            });
+        }
+
+     
         return (
             <Grid >
                 <Section>
@@ -151,7 +175,7 @@ class BodySettings extends Component {
                             </Modal>
                         </View>
                     </View>
-        
+
                 </Section>
 
                 <Section>
@@ -265,7 +289,7 @@ const styles = StyleSheet.create({
     },
     choseBtn: {
         paddingLeft: 70,
-        
+
     },
     button: {
         backgroundColor: '#006AB8',
